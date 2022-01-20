@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>함수-8(객체방식으로 함수정의, 익명함수의 확장으로 함수 정의)</title>
+    
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        //객체방식으로 함수를 정의하는 방법
+        //이런방법이 있구나 알아두는 정도
+        //실무에서 잘 사용되지않는다.
+        //new연산자를 사용하는 이유는 
+        var hi = new Function("name", "document.write(name + '님 환영합니다.<br/>' )");
+        hi("박지연");
+
+        //익명함수의 확장으로 함수 정의
+        
+        //재사용 목적이 아닌 다른 함수들과의 충돌을 막기위한 방법
+        (function(name){
+            document.write(name + "님 환영합니다.");
+        })("박지연");
+
+        
+    </script>
+</head>
+
+<body>
+    
+</body>
+</html>

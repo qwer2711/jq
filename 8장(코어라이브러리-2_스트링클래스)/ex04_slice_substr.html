@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String 클래스-4(slice(),substr())</title>
+    <style>
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        //slice()이용방법
+        //var str1 = "korea";
+        //2번째는 포함하고 4번째는 포함하지않음
+        // var str2 = str1.slice(2,4); //re
+        // var str3 = str1.slice(1,4); //ore
+        // console.log(str1); //korea
+        // console.log(str2); //re
+        // console.log(str3); //ore
+
+        //substr()메서드는 시작 인덱스와 끝 인덱스(미포함)-1까지
+        //문자열을 뽑아내는 역할을 해주는 인덱스 매서드이다.
+
+        //substr()이용방법 
+        var str1 = "korea";
+        //substr()메서드는 시작 인덱스에서 두번째 매개변수의 길이만틈 잘라서
+        //출력해주는 역할을 해주는 메서드이다.
+
+        //slice와substr차이 = 마지막인덱스를 미포함(slice) 포함(substr)
+        var str2 = str1.substr(1,2); //or
+        var str3 = str1.substr(2,4); //rea
+
+        var str4 = str1.slice(1,2); //o
+        var str5 = str1.slice(2,4); //re
+
+        console.log(str1);
+        console.log(str2);
+        console.log(str3);
+        console.log(str4);
+        console.log(str5);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

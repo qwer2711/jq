@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윈도우의 세가지 크기 구하기</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #main{
+            border:1px solid red;
+            background: #eee;
+            width: 1600px;
+            margin: 50px;
+        }
+        #info{
+            border:10px solid red;
+            position: fixed;
+            left: 200px;
+            top: 100px;
+            padding: 20px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var str = "";
+            str += "<br/> 스크린 크기 (작업표시줄O)<br/>" + "screen.width : " + screen.width + "<br/>";
+            str += "screen.height : " + screen.height + "<br/>";
+
+
+             //윈도우의 일반 영역 크기 (메뉴바 , 툴바 , 스크롤바 제외)
+            str += "<br/> 일반 영역 크기(메뉴바X , 툴바X , 스크롤바X ,작업표시줄X)<br/>"+ "window.width : " + $(window).width() + "<br/>";
+            str += "window.height : " + $(window).height() + "<br/>";
+
+            //윈도우의 내부영역 크기 (메뉴바, 툴바 제외 스크롤바 포함
+            str += "<br/>내부영역 크기(메뉴바X , 툴바X , 스크롤바O , 작업표시줄X)<br/>" + "window.innerWidth : " + window.innerWidth + "<br/>";
+            str += "window.innerHeight : " + window.innerHeight + "<br/>";
+
+            //윈도우의 외부 영역 크기 (메뉴바 + 툴바 + 스크롤바)
+            str += "<br/>외부 영역 크기(메뉴바O , 툴바O , 스크롤바O , 작업표시줄X )<br/>" + "window.outerWidth : " + window.outerWidth + "<br/>";
+            str += "window.outerHeight : " + window.outerHeight + "<br/>";
+
+            //도큐먼트 사이즈
+            str += "<br/>도큐먼트 사이즈<br/>" + "$(document).width() = " + $(document).width() + "<br/>";
+            str += "$(document).height() = " + $(document).height() + "<br/>";
+
+            $("#info").html(str);
+
+
+
+            
+            $("#info").html(str);
+        });
+    </script>
+    
+</head>
+<body>
+    <div id="main">
+        <p>안녕1</p>
+        <p>안녕2</p>
+        <p>안녕3</p>
+        <p>안녕4</p>
+        <p>안녕5</p>
+        <p>안녕6</p>
+        <p>안녕7</p>
+        <p>안녕8</p>
+        <p>안녕9</p>
+        <p>안녕10</p>
+        <p>안녕11</p>
+        <p>안녕12</p>
+        <p>안녕13</p>
+        <p>안녕14</p>
+        <p>안녕15</p>
+        <p>안녕16</p>
+        <p>안녕17</p>
+        <p>안녕18</p>
+        <p>안녕19</p>
+        <p>안녕20</p>
+        <p>안녕21</p>
+        <p>안녕22</p>
+        <p>안녕23</p>
+        <p>안녕24</p>
+        <p>안녕25</p>    
+    </div>
+
+    <div id="info">
+        문서의 크기 출력
+    </div>
+</body>
+</html>

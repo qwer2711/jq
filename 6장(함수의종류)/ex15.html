@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>콜백함수-4(콜백함수 클로저 풀이)</title>
+
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        //document시작과 동시에 함수 호출
+        $(document).ready(function () {
+            //결과값 도출
+            checkCount(showAlert);
+        });
+
+
+        //로직구현부분
+        function checkCount(callback) {
+            var count = 0;
+            $("#btnStart").click(function () {
+                count++;
+                if (count >= 5) {
+                    callback(); //콜백 호출
+                }
+            });
+
+        }
+
+        //로직처리부분
+        function showAlert() {
+            alert(" 완료되었습니다."); //로직처리부분
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    <button id="btnStart">시작</button>
+
+</body>
+
+</html>

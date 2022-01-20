@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 단계 확인하기</title>
+    <style>
+        body{
+            font-size: 20px;
+        }
+        *{
+            margin: 50px;
+            border:1px solid red;
+            min-height: 20px;
+            cursor:pointer;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        //리스너 실행횟수를 위한 전역변수
+        var cnt = 0;
+        $(document).ready(function(){
+            //캡쳐 단계에 첫번째인 document에게 이벤트를 등록하고 있다.
+            document.addEventListener("click",function(e){
+                cnt++;
+                console.log("1.document phase = " + e.eventPhase + " cnt =" + cnt);
+            }, true);
+
+            //캡쳐 두번째 단계에 body에게 이벤트를 등록하고 있다.
+            document.body.addEventListener("click",function(e){
+                cnt++;
+                console.log("2.body phase = " + e.eventPhase + " cnt =" + cnt);
+            }, true);
+
+            //캡쳐 세번째 단계에 A1에게 이벤트를 등록하고 있다.
+            $("#A1").get(0).addEventListener("click",function(e){
+                cnt++;
+                console.log("3.A1 phase = " + e.eventPhase + " cnt =" + cnt);
+            }, true);
+
+            //타겟 단계의 네번째 단계에서 B1에게 이벤트를 등록하고 있다.
+            $("#B1").get(0).addEventListener("click",function(e){
+                cnt++;
+                console.log("4.B1 phase = " + e.eventPhase + " cnt =" + cnt);
+            }, true);
+
+            //document 버블단계에 이벤트 등록
+            $(document).on("click",function(e){
+                cnt++;
+                console.log("8.document phase = " + e.eventPhase + " cnt= " + cnt);
+            });
+
+            //body 버블단계에 이벤트 등록
+            $("body").on("click",function(e){
+                cnt++;
+                console.log("7.body phase = " + e.eventPhase + " cnt= " + cnt);
+            });
+
+            //A1 버블단계에 이벤트 등록
+            $("#A1").on("click",function(e){
+                cnt++;
+                console.log("6. A1 phase = " + e.eventPhase + " cnt= " + cnt);
+            });
+
+            //B1 타겟단계에 이벤트 등록
+            $("#B1").on("click",function(e){
+                cnt++;
+                console.log("5. B1 phase = " + e.eventPhase + " cnt= " + cnt);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="A1">
+        A1
+        <div id="B1">
+            B1
+            <div id="C1">
+            C1
+            </div>
+        </div>
+    </div>
+    <div id="A2">
+        A2
+        <div id="B2">
+            B2
+            <div id="C2">
+            C2
+            </div>
+        </div>
+    </div>
+</body>
+</html>

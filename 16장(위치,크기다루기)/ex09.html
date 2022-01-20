@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크기 다루기-변경</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 20px;
+        }
+        
+        #parent1{
+            position: absolute;
+            width: 500px;
+            height: 400px;
+            left: 50px;
+            top:100px;
+            border:1px solid black;
+        }
+
+        #child{
+            position: absolute;
+            padding: 20px;
+            background-color: white;
+            width: 100px;
+            height: 100px;
+            left: 100px;
+            top:100px;
+            border:30px solid black;
+        }
+
+
+        
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $child = $("#child");
+            $("#btn1").click(function(e){
+                //child의 기본크기 width()와 height() 메서드를 이용하여 기본크기 변경함
+                $child.width(200);
+                $child.height(200);
+            });
+
+            $("#btn2").click(function(e){
+                //child의 기본크기 + padding까지 구하는 innerwidth()와 innerheight() 메서드를 이용하여 기본크기 변경함
+                //패딩 포함하는 크기를 변경하고 있다.
+                $child.innerWidth(200);
+                $child.innerHeight(200);
+            });
+        });
+    </script>
+    
+</head>
+<body>
+    <div class="nav">
+        <button id="btn1">
+            width()를 활용한 크기변경
+        </button>
+        <br>
+        <button id="btn2">
+            innerwidth()를 활용한 크기변경
+        </button>
+        <br>
+
+        <div id="parent1">
+            parent1
+            <div id="child">
+                child
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 vs 제이쿼리 스타일 다루기-3</title>
+    <style>
+        div{
+            margin:10px;
+            padding: 10px;
+            font-size: 26px;
+            border:1px solid red;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        //자바스크립트로 여러 스타일 속성값 변경하기
+        //여러 스타일을 바꾸고 싶으면 스타일 개수만큼
+        //아래와 같이 코드를 추가해야한다.
+        // window.onload = function(){
+        //     var content = document.getElementById("test");
+        //     content.style.fontSize = "8px";
+        //     content.style.border = "5px solid red";
+        //     content.style.margin = "10px";
+            
+        // }
+
+        //제이쿼리로 스타일 접근
+        $(document).ready(function(){
+            var $content = $("#test");
+
+            //제이쿼리는 한번에 묶어서 속성값 변경가능
+            $content.css({
+                fontSize: "25px",
+                border: "5px solid red",
+                margin: "15px"
+            });
+
+        });
+        
+    </script>
+</head>
+<body>
+    <div id="test" class="content" style="color:blue;">
+        스타일다루기
+    </div>
+</body>
+</html>

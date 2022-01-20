@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>클로저함수 -2 (setInterval)</title>
+
+
+    <style></style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                start();
+                document.write("시작합니다.<br>");
+
+            });
+
+            //2초마다 cnt를 출력
+            function start(){
+                var cnt = 0;
+                setInterval(function(){
+                    cnt++; //외부함수의 지역변수사용
+                    //메모리에서 제거 안됨
+                    document.write(cnt+"<br>");
+
+                },2000);
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <button id="btn">시작</button>
+</body>
+
+</html>

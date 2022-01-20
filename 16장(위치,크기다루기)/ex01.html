@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좌표값 구하기 (position매서드활용)</title>
+    <style>
+        body{
+            font-size: 20px;
+        }
+        #panel{
+            width: 600px;
+            height: 300px;
+            border:2px solid gray;
+        }
+        .bar{
+            position: absolute;
+            left: 50px;
+            top:190px;
+            width: 500px;
+            height: 20px;
+            background: red;
+        }
+        #gigu{
+            position: absolute;
+            left: 50px;
+            top:-70px;
+            width: 70px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //지구 노드 구하기
+            var $gigu = $("#gigu");
+            var currentX = $gigu.position().left;
+
+
+            //버튼이벤트 걸기
+            $("#move").click(function(){
+                //지구의 위치값 더하기
+                currentX = currentX + 10;
+                $gigu.css("left" , currentX);
+                console.log(currentX);
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div id="panel">
+        <div class="bar">
+            <img src="images/gigu.PNG" id="gigu" alt="">
+        </div>
+        <div>
+            <button id="move">이동</button>
+        </div>
+    </div>
+</body>
+</html>

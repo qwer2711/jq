@@ -1,0 +1,37 @@
+#item {
+    position: relative;
+    width: 500px;
+    height: auto;
+    margin: auto;
+}
+
+.img-box {
+    position:relative;
+}
+
+.img-box .over{
+    position:absolute;
+    top:87%;
+    left: 2%;
+
+}
+
+.img-box > img{
+    display: block;
+    width: 100%;
+}
+
+
+.detail {
+    display: none;
+    text-align: center;
+
+}
+
+button{
+    background: rgba(255,255,255,0.7);
+    padding: 5px;
+    border:1px solid #ccc;
+    font-size: 0.8em;
+    border-radius: 2px;
+}

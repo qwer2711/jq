@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드생성 - 자바스크립트 이용 appendChild</title>
+    <style>
+        body{
+            font-size: 15px;
+            font-family:"맑은 고딕";
+        }
+        ul,li {
+            border:3px solid red;
+            margin: 10px;
+        }
+        ul {
+            padding: 10px;
+        }
+        li.select {
+            background-color: aquamarine;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        var cnt = 0;
+        $("#btnAdd").click(function(){
+            cnt++;
+            //var $li = $("<li>메뉴" + cnt + "</li>");
+            //li 객체를 출력하고 있다.
+            //console.log($li.get(0));
+            //HTMLelement를 출력하고 있다.
+            //document.write($li.get(0))
+
+            var li = document.createElement("li");
+            var liText = document.createTextNode("메뉴"+cnt);
+            var menu = document.getElementById("menu");
+            //텍스트 노드를 li 노드에게 추가
+            li.appendChild(liText);
+            //menu선택자에게 li 노드를 추가
+            menu.appendChild(li);
+        });
+    });
+    </script>
+</head>
+<body>
+    <button id="btnAdd">추가하기</button>
+    <ul id="menu">
+        
+    </ul>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String 클래스-10(정규 표현식을 이용한 공백제거)</title>
+    <style>
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        var str = "  안녕하세요   반갑습니다   문자열을 자릅니다   ";
+        console.log("원본 문자열:" + str);
+        
+        //정규표현식의 종료
+        //^ : 입력의 시작을 찾음
+        //$ : 입력의 끝을 찾음
+        //* : 앞에 오는 문자를 0번이상 찾는다(ex "zo*"를 입력하면 "z"나"zoo"를 찾는다.")
+        //+ : 앞에 오는 문자를 1번이상 찾는다(ex "zo+"를 입력하면 "z"찾지않고 "zoo"를 찾는다.")
+        //? : 앞에 오는 문자를 0번이상 찾는다(ex "a?ve?"를 입력하면 "naver"에 있는 "ve"를 찾는다.")
+        //\s : 공백문자를 찾는다.
+        //\S : 공백문자 아닌 것을 찾는다.
+        //g : 전역검색을 칭함
+
+
+
+
+        //전체 공백 제거는 자바스크립트의 정규 표현식을 이용해야한다.
+        //전체공백제거 정규표현식
+        //전체에서 찾음/()/
+        //\s* 공백
+        //\s* 공백 * -> 최소0번이상 계속 찾음
+        //g -> global 문제 전역을 뒤져서 찾음
+
+        console.log("전체공백제거:" + str.replace(/(\s*)/g,""));
+        //^입력의 제일 처음 시작부분을 찾음
+        console.log("앞 공백제거:" + str.replace(/^\s*/,""));
+        //$입력의 제일 끝부분부터 찾음
+        console.log("뒷 공백제거:" + str.replace(/\s*$/,""));
+    </script>
+</head>
+<body>
+    <div>
+        <input type="text" id="input">
+        <button id="confirm">확인</button>
+    </div>
+    <textarea id="output">실행결과</textarea>
+</body>
+</html>

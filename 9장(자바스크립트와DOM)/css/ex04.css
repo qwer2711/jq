@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#container {
+    max-width: 1000px;
+    margin: 0 auto 50px;
+    display: block;
+    clear: both;
+}
+
+#heading {
+    margin: 30px 0;
+}
+
+img {
+    cursor: pointer;
+}
+
+#left_box {
+    float: left;
+    width: 40%;
+    margin-bottom: 15px;
+}
+
+#prod-pic{
+    width: 200px;
+    padding: 0;
+}
+
+#cup{
+    box-shadow: 1px 1px 2px #eee;
+    outline-offset: -7px;
+    width: 100%;
+    display: block;
+}
+
+.small {
+    width: 120px;
+}
+
+
+#small-pic{
+    list-style: none;
+    padding: 0;
+    clear:both;
+    display: block;
+}
+
+#small-pic img {
+    width: 60px;
+    float: left;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+#small-pic img:last-child {margin-right: 0;} 
+
+#right_box {
+    float: left;
+    margin-left: 3%;
+    width: 300px;
+}
+
+.bluetext {
+    color: blue;
+    font-weight: bold;
+}
+
+button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+}
+
+#right_box ul {
+    list-style: none;
+}
+
+#right_box li {
+    font-size: 0.9em;
+    line-height: 1.8;;
+}
+
+hr {
+    clear: both;
+    border:1px dashed;
+    
+}
+
+#detail {
+    padding-top: 15px;
+    display: none;
+}
+
+#detail li {
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+h1 {
+    font-size: 2em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: gray;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h3{
+    font-size: 1.2em;
+    color: #222;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 0.9em;
+    text-align: justify;
+    line-height: 1.4;
+}

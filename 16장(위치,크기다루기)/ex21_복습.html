@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버튼 누르면 이미지 변경 슬라이드 만들기</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrap {
+            margin: 50px;
+        }
+        #prev, #next {
+            width: 80px;
+            height: 40px;
+        }
+        .banner {
+            margin-top: 10px;
+            width: 260px;
+            height: 166px;
+            position: relative;
+            border:1px solid red;
+            overflow:hidden;
+        }
+        .banner-container {
+            width: 1300px;
+            position: absolute;
+            left: 0;
+            top:0;
+        }
+
+        .banner-container li{
+            float: left;
+            width: 260px;
+        }
+
+        .banner-container img {
+            display: block;
+            width: 100%;
+        }
+        
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //배너 하나의 너비 구하기 260px
+            var bannerWidth = $(".banner").width();
+            //.banner-container구하기1300px
+            var $bannerCont = $(".banner-container");
+            //배너 이미지 개수 구하기 = 5
+            var bannerLength =$bannerCont.find("img").length;
+            //배너의 index값을 저장변수
+            var currentIndex = 0;
+
+            $("#prev").click(function(){
+                //인덱스 값 구하기 0~4
+                currentIndex--;
+
+                if(currentIndex < 0){
+                    //currentIndex = 4
+                    currentIndex = bannerLength -1;
+                }
+                //currentIndex에 해당하는 이미지 출력
+                showImage(currentIndex);
+            });
+
+            $("#next").click(function(){
+                //인덱스 값 구하기
+                currentIndex++;
+
+                if(currentIndex >= bannerLength){
+                    currentIndex = 0;
+                }
+
+                //currentIndex에 해당하는 이미지 출력
+                showImage(currentIndex);
+            });
+
+            function showImage(i){
+                //index번째 배너 위치 값 구하기
+                var left = -(i * bannerWidth);
+                //배너콘테이너 위치 설정
+                $bannerCont.css("left",left);
+            }
+
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <button id="prev">이전</button>
+        <button id="next">다음</button>
+        <div class="banner">
+            <div class="banner-container">
+                <li><img src="images/1.png" alt=""></li>
+                <li><img src="images/2.png" alt=""></li>
+                <li><img src="images/3.png" alt=""></li>
+                <li><img src="images/4.png" alt=""></li>
+                <li><img src="images/5.png" alt=""></li>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

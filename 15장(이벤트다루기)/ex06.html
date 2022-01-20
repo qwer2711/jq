@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버블링 멈추기 bubbles , e.stopPropagation();</title>
+    <style>
+        body{
+            font-size: 30px;
+        }
+        #btn1 , #btn2 {
+            font-size: 30px;
+        }
+        #panel{
+            border:1px solid red;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //panel클릭 이벤트 리스터 등록
+            $("#panel").click(function(e){
+                console.log("cancelable 값 : " + e.cancelable);
+                console.log("panel에 등록된 클릭 이벤트" + e.eventPhase);
+                $(this).css("background","red");
+            });
+
+            //btn1에 클릭 이벤트 리스터 등록
+            $("#btn1").click(function(e){
+                //부모도 함께 클릭됨
+                console.log("bubbles 값 : " + e.bubbles);
+                console.log("btn1 버블링 처리" + e.eventPhase);
+                // e.stopPropagation();
+                $(this).css("background","blue");
+            });
+
+            //btn2에 클릭 이벤트 리스터 등록
+            $("#btn2").click(function(e){
+                console.log("bubbles 값 : " + e.bubbles);
+                console.log("btn1 버블링 중지" + e.eventPhase);
+                //버블링 중지 매서드
+                //bubbles가 true일 때 가능
+                e.stopPropagation();
+                $(this).css("background","pink");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="panel">
+        <button id="btn1">버블링처리</button>
+        <button id="btn2">버블링중지</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 다루기 - index()의 주의점****</title>
+    <style>
+        body {
+            font-size: 15px;
+            font-family: "굴림";
+        }
+        div, p, ul, li {
+            border: 1px solid gray;
+            margin: 10px;
+        }
+        ul {
+            padding: 10px;
+        }
+        li.select {
+            background-color: #ccc;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            //연속해서 태그가 있지 않은 경우 제이쿼리 객체 index()매서드를
+            //호출하게 되면 인덱스 값이 항상 0이 나오게 된다.
+            //이런경우 $대상.index($대상);
+            //이런경우 $대상.index(대상DOM);
+            $(document).ready(function(){
+                //var $aList = $("ul li a");
+                $("ul li a").click(function(){
+                    //index값이 다 0이 나온다.
+                    //alert($aList.index());
+
+                    //this를 붙여줘야 제대로된 index 나옴
+                    alert($("ul li a").index(this));
+                });
+            });
+        });
+        
+    </script>
+</head>
+<body>
+    <ul>
+        <li><a href="#">메뉴1</a></li>
+        <li><a href="#">메뉴2</a></li>
+        <li><a href="#">메뉴3</a></li>
+        <li><a href="#">메뉴4</a></li>
+        <li><a href="#">메뉴5</a></li>
+    </ul>
+</body>
+</html>

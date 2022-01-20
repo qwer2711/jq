@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버블링 활용-1(하나의 이벤트 리스너를 통해 여러 이벤트를 처리하는 코드)</title>
+    <!-- <title>버블링 활용한 효율적인 다중태그 선택</title> -->
+
+    <style>
+        body{
+            font-size: 30px;
+        }
+        
+        ul{
+            border:1px solid black;
+        }
+
+        li {
+            border:1px solid red;
+            margin: 20px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //모든 li객체에 이벤트 리스너가 5개나 등록되어있음
+            //리스너가 많게 되어 효율이 떨어짐
+            // $(".menu li").on("click",function(e){
+            //     console.log(e.target.tagName);
+            //     alert($(this).html());
+            // });
+
+            //ul태그에만 이벤트 리스너 단1개만 등록
+            //버블링을 이용한 효율적인 코드
+            $(".menu").on("click","li",function(e){
+                //클린된 태그(이벤트발생)를 출력하는 코드 target
+                console.log(e.target.tagName);
+                alert($(this).html());
+            });
+        });
+    </script>
+</head>
+<body>
+    <ul class="menu">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li>메뉴5</li>
+    </ul>
+</body>
+</html>

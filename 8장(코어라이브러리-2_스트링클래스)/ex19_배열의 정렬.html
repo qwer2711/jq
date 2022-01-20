@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 클래스(정렬-숫자)</title>
+    <style>
+
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        //sort()는 문자열 기반으로 만들어져있는 메서드이기 때문에 숫자정렬을 하고자 할 때 
+        //제대로 정렬되지 않는다.
+        //이 문제점을 해결하기 위해서는 아래왕 같이 정렬 기준을 제시 해야한다.
+        var descNumber = [6, 8, 10, 2, 4, 19, 43, 57, 13];
+        document.write("오름차순 실행 전: " + descNumber.join("/") + "<br/>");
+
+        descNumber.sort(function (a, b) {
+            if (a > b) {
+                return 1;
+            }
+
+            if (a < b) {
+                return -1;
+            }
+        });
+
+        document.write("오름차순 실행 후: " + descNumber.join("/")+ "<br/>");
+
+        var ascNumber = [6, 8, 10, 2, 4, 19, 43, 57, 13];
+        document.write("내림차순 실행 전: " + ascNumber.join("/") + "<br/>");
+
+        ascNumber.sort(function (a, b) {
+            if (a > b) {
+                return -1;
+            }
+
+            if (a < b) {
+                return 1;
+            }
+        });
+
+        document.write("내림차순 실행 후: " + ascNumber.join("/"));
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

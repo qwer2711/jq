@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크기 다루기-1</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 20px;
+        }
+        #info{
+            border:1px solid black;
+            width: 600px;
+            height: 200px;
+            margin: 50px 0 0 100px;
+            
+        }
+
+        #parent1{
+            position: absolute;
+            width: 500px;
+            height: 400px;
+            left: 100px;
+            top:300px;
+            border:1px solid black;
+        }
+
+        #gigu{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 50px;
+            top:100px;
+            padding: 30px;
+            margin: 50px;
+            border:20px solid red;  
+        }
+
+
+        
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        window.onload = function(){
+            var $info = $("#info");
+            var $gigu = $("#gigu");
+
+            //4가지 종류에 대한 크기 구하는 코드
+            var str = "기본크기 width : " + $gigu.width() + ", height : " + $gigu.height() + "<br/>";
+            str += "기본크기 + padding : " + $gigu.innerWidth() + ", height :" + $gigu.innerHeight() + "<br/>";
+            str += "기본크기 + padding + border : " + $gigu.outerWidth() + ", height :" + $gigu.outerHeight() + "<br/>";
+            str += "기본크기 + padding + border + margin : " + $gigu.outerWidth(true) + ", height :" + $gigu.outerHeight(true) + "<br/>";
+
+            //지역좌표, 전역좌표 구하기
+            var $localPos = $gigu.position();
+            str += "지역좌표 left : " + parseInt($localPos.left) + " / 지역좌표 top : " + parseInt($localPos.top) + "<br/> ";
+
+            var $globalPos = $gigu.offset();
+            str += "전역좌표 left : " + parseInt($globalPos.left) + " / 전역좌표 top : " + parseInt($globalPos.top) + "<br/>";
+            
+            $info.html($info.html() + str);
+            
+        }
+    </script>
+    
+</head>
+<body>
+    <div id="info">
+        (padding=30px, border=20px, margin=50px)
+        <br/>
+    </div>
+    <div id="parent1">
+        <img src="images/gigu.PNG" id="gigu">
+    </div>
+</body>
+</html>

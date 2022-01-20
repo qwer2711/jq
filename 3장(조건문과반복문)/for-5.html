@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문-5(구구단 몇단입력? prompt)</title>
+</head>
+<body>
+    <script>
+        //사용자로 입력받는 부분
+        var dan = prompt("구구단 몇단을 출력할까요?", "숫자입력");
+        //string => number
+        dan = parseInt(dan);
+
+
+        for (var i=1; i<=9; i++){
+
+            document.write(dan + "x" + i + "=" + (dan * i) + "<br>");
+
+        }
+
+
+    </script>
+</body>
+</html>

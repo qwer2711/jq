@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>브랜드 롤링 배너</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .banner {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            border: 2px solid gray
+        }
+
+        #banner1 {
+            top: 50px;
+            left: 50px;
+        }
+    </style>
+
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            //배열로 이미지리스트 저장
+            var imgList = ["pf-1.jpg", "pf-2.jpg", "pf-3.jpg", "pf-4.jpg", "pf-5.jpg", "pf-6.jpg"];
+            var index = 0;
+            var $banner = $(".banner");
+
+            setInterval(function(){
+
+                index++;
+
+                //index가 imgList 배열의 길이보다 같거나 크면
+                //index를 다시 0으로 저장을 해야 이미지가 롤링되면서 보인다.
+                if ( index >= imgList.length){
+                    index = 0;
+                }
+
+                var imgName = imgList[index];
+
+                $banner.attr("src","images/" + imgName);
+
+            },1000);
+
+
+        });
+
+
+
+    </script>
+</head>
+
+<body>
+    <img src="images/pf-1.jpg" class="banner" id="banner1">
+</body>
+
+</html>

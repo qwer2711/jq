@@ -1,0 +1,20 @@
+.hello{
+    background-image: url(../images/gigu.PNG);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 400px;
+    height: 300px;
+    border:1px solid red;
+    position: relative;
+
+}
+
+.hello .text {
+    bottom: 0;
+    color: red;
+    font-family: Verdana !important;
+    font-size: 40px !important;
+    font-weight: bold;
+    position: absolute;
+    text-shadow: 0 0 5px #000;
+}

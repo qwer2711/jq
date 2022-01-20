@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>물고기잡기게임</title>
+
+    <style>
+        #start {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 200px;
+        }
+        
+        #scoreText {
+            margin-right: 20px;
+        }
+
+        #score {
+            font-size: 20px;
+            font-weight: bold;
+            color: #f00;
+        }
+
+        .panel {
+            width: 600px;
+            height: 400px;
+            position: relative;
+            background:rgb(24, 156, 243);
+            margin-top: 120px;
+        }
+        .panel .circle {
+            position: absolute;
+            top:-55px;
+            width: 150px;
+            height: 100px;
+            background: rgb(24, 156, 243);
+            border-radius: 100%;
+        }
+
+        .panel .circle:nth-child(2){
+            left: 120px;
+            width: 200px;
+            top:-65px;
+        }
+
+        .panel .circle:nth-child(3){
+            left: 300px;
+            width: 200px;
+        }
+
+        .panel .circle:nth-child(4){
+            left: 450px;
+            width: 151px;
+            top:-45px;
+        }
+
+        #fish {
+            position: absolute;
+            left: 40%;
+            top: 35%;
+            width: 150px;
+            height: 90px;
+            user-select: none;
+            cursor: pointer;
+        }
+
+    </style>
+
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+
+        var cnt = 0;
+        var $score = null;
+        var $fish = null;
+        var play = false; //플래그변수
+        var timeID = 0;
+
+        $(document).ready(function(){
+            //요소들 초기화
+            init();
+            //이벤트 등록
+            initEvent();
+        });
+
+        function init(){
+            $score= $('#score');
+            $fish = $("#fish");
+        }
+
+        //이벤트 등록하기
+        function initEvent() {
+
+            //버튼을 누르면 게임시작
+            $("#start").click(function(){
+                startGame();
+            });
+
+            //물고기 클릭하면 점수가 증가
+            $fish.click(function(){
+                addScore();
+            });
+        }
+
+        
+
+        function startGame() {
+                //플래그 변수로 false일때 게임 시작할 수 있게 만든다.
+                if(play == false) {
+
+                    cnt = 0;
+                    $score.html(cnt);
+
+                    //게임 10초뒤에 종료
+                    checkEndGame();
+
+                    play = true;
+                    timeID = setInterval(function(){
+                        //물고기가 움직이기
+                        moveFish();
+                    },800);
+                }
+
+            }
+
+            //점수를 증가시키는 addScore()구현
+            function addScore() {
+                if(play == true){
+                    cnt++;
+                    $score.html(cnt);
+                }
+
+            }
+
+            //물고기 움직이게 하는 moveFish()구현
+            function moveFish() {
+                //물고기크기 120*70
+                //패널 600 * 400
+                //물고기가 x축 이동영역 0~350
+                //물고기가 y축 이동영역 0~300
+
+                var x = parseInt(Math.random()* 350);
+                var y = parseInt(Math.random()* 300);
+
+                $fish.css({
+                    left : x,
+                    top : y
+                });
+            }
+
+            function checkEndGame() {
+                //게임이 5초뒤에 종료가 되게한다.
+                setTimeout(function(){
+                    play = false;
+                    //물고기 움직이는 타이머 종료함
+                    clearInterval(timeID);
+                    alert("게임종료");
+
+                },10000);
+            }
+
+
+
+    </script>
+</head>
+
+<body>
+    <button id="start">게임시작</button>
+    <span id="scoreText">현재점수 :</span>
+    <span id="score">0</span>
+    <div class="panel">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <img src="images/fish.png" id="fish">
+    </div>
+</body>
+
+</html>

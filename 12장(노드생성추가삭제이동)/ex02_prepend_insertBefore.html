@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드생성 - 제이쿼리로 이용 (prepend(),prependTo())</title>
+    <style>
+        body{
+            font-size: 15px;
+            font-family:"맑은 고딕";
+        }
+        ul,li {
+            border:3px solid red;
+            margin: 10px;
+        }
+        ul {
+            padding: 10px;
+        }
+        li.select {
+            background-color: aquamarine;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        var cnt = 0;
+        $("#btnAdd").click(function(){
+            cnt++;
+            //신규노드를 생성하는데 문자열을 이용해서 바로 추가하는 방법
+            //prepend()prependTo()매서드는 맨 처음 자식 노드로 추가됨
+            // $("#menu").prepend("<li>"+ cnt + "</li>");
+
+            var $li = $("<li>"+ cnt + "</li>");
+
+            //신규노드를 직접 생성하여 추가하는 방법prepend()
+            //$("#menu").prepend($li);
+
+            //신규노드를 직접 생성하여 추가하는 방법prependTo()
+            //$li.prependTo("#menu");
+
+            //신규노드를 직접 생성하여 추가하는 방법insertBefore()
+
+            //5번째를 기준으로 위로 블럭 쌓이며 계속 추가됨
+            //$li.insertBefore("#menu li:nth-child(5)");
+
+            //5번째를 기준으로 아래로 블럭 쌓이며 계속 추가됨
+            $li.insertBefore("#menu li.select");
+        });
+    });
+    </script>
+</head>
+<body>
+    <button id="btnAdd">추가하기</button>
+    <ul id="menu">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li class="select">메뉴5</li>
+    </ul>
+</body>
+</html>

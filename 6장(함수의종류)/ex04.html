@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>함수-4(리턴 값으로 익명함수를 이용하는 방법)</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <script>
+        //setInterval은 window 전역객체에 존재하며
+        //타이머 함수의 일종이다.
+        //주어진 시간동안 지연하다가 주어진 함수를 실행한다.
+        //아래함수는 1초마다 "안녕하세요"를 출력한다.
+        setInterval(function(){
+            document.write("안녕하세요<br/>");
+        },1000);
+
+    </script>
+</body>
+</html>

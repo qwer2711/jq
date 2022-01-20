@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션 show(),hide()</title>
+    <style>
+        *{
+            font-size: 25px;
+
+        }
+        #target {
+            border:1px solid black;
+            width: 600px;
+            height: 450px;
+            text-align: center;
+        }
+        #kor {
+            width: 100%;
+            display: block;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $img = $("#target");
+            //팝업창 할 때 주로 사용
+            $("#show").click(function(){
+                $img.show(1000,function(){
+                    alert("완료");
+                });
+            });
+            $("#hide").click(function(){
+                $img.hide(1000,function(){
+                    alert("사라짐");
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="target">
+        <img src="images/korea.png" alt="" id="kor">
+    </div>
+    <div>
+        <button id="show">show</button>
+        <button id="hide">hide</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 강제로 발생 시키기(trigger()-1)</title>
+    <style>
+        #btnA, #btnB{font-size: 30px;}
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".btnA").on("click",function(e){
+                $(this).css("background","blue");
+                //강제로 butt에 이벤트가 발생되도록 한다.
+                //a누르면 butt이벤트 실행하기
+                $(".butt").trigger("click");
+            });
+
+            //butt에 클릭 이벤트 등록
+            $(".butt").on("click",function(e){
+                $(this).css("background","red");
+                
+                //butt(3개중)누르면 a이벤트 실행
+                // $(".btnA").trigger("click");
+            });
+        });
+    </script>
+</head>
+<body>
+    <button class="btnA">버튼A</button>
+    <button class="butt btnB">버튼B</button>
+    <button class="butt btnC">버튼C</button>
+    <button class="butt btnD">버튼D</button>
+</body>
+</html>

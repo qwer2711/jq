@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 정의 애니메이션 만들기 -2 움직이면서 사라지기</title>
+    <style>
+        *{
+            font-size: 20px;
+        }
+    
+        #target {
+            border:1px solid black;
+            width: 400px;
+            height: 300px;
+            text-align: center;
+            position: relative;
+        }
+        #kor {
+            width: 100%;
+            display: block;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <!-- 이징함수 사용하기위해 라이브러리 가져옴 -->
+    <script src="libs/jquery.easing.1.3.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $img = $("#target");
+
+            //나타나는 효과
+            $("#show").click(function(){
+                $img.animate({
+                    opacity : 1,
+                    left : 0,
+                    top : 0
+                }, 2000, "easeInQuint" , function(){
+                    alert("애니메이션 종료");
+                });
+            });
+
+            //사라지는 효과
+            $("#hide").click(function(){
+                $img.animate({
+                    opacity : 0,
+                    left : 500,
+                    top : 200
+                }, 2000, "easeOutQuint" , function(){
+                    alert("애니메이션 종료");
+                });
+            });
+
+            //애니메이션을 실행중에 멈추는 기능 stop
+            $("#stop").click(function(){
+                $img.stop();
+            });
+
+            
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <button id="show">show</button>
+        <button id="hide">hide</button>
+        <button id="stop">stop</button>
+    </div>
+    <div id="target">
+        <img src="images/korea.png" alt="" id="kor">
+    </div>
+    
+</body>
+</html>

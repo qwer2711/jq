@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-1</title>
+
+</head>
+<body>
+    <div id="detail">
+        <h2>메뉴정보</h2>
+        <ul>
+            <li>커피1</li>
+            <li>커피2</li>
+            <li>커피3</li>
+            <li>커피4</li>
+            <li>커피5</li>
+        </ul>
+        <h3>상세설명</h3>
+        <p>대통령은 조국의 평화적 통일을 위한 성실한 의무를 진다. 언론·출판에 대한 허가나 검열과 집회·결사에 대한 허가는 인정되지 아니한다. 각급 선거관리위원회의 
+            조직·직무범위 기타 필요한 사항은 법률로 정한다.
+            근로자는 근로조건의 향상을 위하여 자주적인 
+            단결권·단체교섭권 및 단체행동권을 가진다. 
+            법률이 정하는 주요방위산업체에 종사하는 
+            근로자의 단체행동권은 법률이 정하는 바에 의하여 
+            이를 제한하거나 인정하지 아니할 수 있다.
+        </p>
+    </div>
+
+    <script>
+        document.getElementById("detail").onclick = function(){
+            this.style.fontSize = "2em";
+        }
+    </script>
+</body>
+</html>

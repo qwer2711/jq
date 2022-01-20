@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리를 활용한 물고기 랜덤으로 움직이기</title>
+    <style>
+        #panel {
+            width: 600px;
+            height: 400px;
+            border: 1px solid red;
+            position: relative;
+        }
+
+        #fish {
+            position: absolute;
+            left: 250px;
+            top: 150px;
+            width: 100px;
+        }
+
+        #fish1 {
+            position: absolute;
+            left: 150px;
+            top: 100px;
+            width: 100px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        //사진이 있기때문에 사진이 다 불러와서 실행해야함
+        //document 대신 window.onload 사용
+        window.onload = function () {
+            //물고기 노드 구하기
+            var $fish = $("#fish");
+            var $fish1 = $("#fish1");
+            var timeID = 0;
+            //패널의 너비와 높이 구하기
+
+            //width값에 px도 포함되어있기때문에 parseInt()처리해줘야함
+            var panelWidth = parseInt($("#panel").css("width"));
+            var panelHeight = parseInt($("#panel").css("height"));
+
+            //물고기 크기
+            panelWidth = panelWidth - parseInt($fish.css('width'));
+            panelHeight = panelHeight - parseInt($fish.css('height'));
+            panelWidth1 = panelWidth - parseInt($fish1.css('width'));
+            panelHeight1 = panelHeight - parseInt($fish1.css('height'));
+
+            $("#btnStart").click(function () {
+                var left = parseInt(Math.random() * panelWidth);
+                var top = parseInt(Math.random() * panelHeight);
+                var left1 = parseInt(Math.random() * panelWidth);
+                var top1 = parseInt(Math.random() * panelHeight);
+
+                //물고기 위치 설정하기 
+                $fish.css({
+                    left: left,
+                    top: top
+                });
+
+                $fish1.css({
+                    left: left1,
+                    top: top1
+                });
+
+                if (timeID == 0) {
+                    timeID = setInterval(function () {
+                        $("#btnStart").click();
+                    }, 500);
+                }
+            });
+
+            $("#btnStop").click(function(){
+                clearInterval(timeID);
+                timeID = 0;
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btnStart">물고기 움직이기</button>
+    <button id="btnStop">물고기 멈추기</button>
+    <div id="panel">
+        <img src="images/fish.png" id="fish">
+        <img src="images/fish.png" id="fish1">
+    </div>
+</body>
+
+</html>

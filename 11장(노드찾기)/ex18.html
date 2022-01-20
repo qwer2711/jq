@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 다루기- 형제 노드 찾는 방법들</title>
+    <style>
+        .tab-menu {
+            list-style: none;
+            height: 80px;
+        }
+
+        .tab-menu li {
+            width: 100px;
+            height: 40px;
+            background-position-y: 0;
+            text-indent: -1000px;
+            overflow: hidden;
+            display: inline-block;
+            float: left;
+        }
+
+        .tab-menu li:hover {
+            background-position-y: -40px;
+        }
+
+        .tab-menu li.select {
+            height: 80px;
+            background-position-y: -80px;
+        }
+
+        .tab-menu li.menuitem1 {
+            background-image: url(images/newbtn.bar.1.png);
+        }
+
+        .tab-menu li.menuitem2 {
+            background-image: url(images/newbtn.bar.2.png);
+        }
+
+        .tab-menu li.menuitem3 {
+            background-image: url(images/newbtn.bar.3.png);
+        }
+
+        .tab-menu li.menuitem4 {
+            background-image: url(images/newbtn.bar.4.png);
+        }
+
+        .tab-menu li.menuitem5 {
+            background-image: url(images/newbtn.bar.5.png);
+        }
+
+        .tab-menu li.menuitem6 {
+            background-image: url(images/newbtn.bar.6.png);
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            //클릭한 이미지의 인덱스를 출력하는 프로그램
+            $("#tabMenu li").click(function() {
+                alert("인덱스 값 : " + $(this).index());
+            });
+
+            //1초 간격으로 탭메뉴가 select 적용하기
+            var currentIndex = 0;
+            var $menuItems = $("#tabMenu li");
+
+            var timerID = setInterval(function() {
+                //인덱스로 노드찾기 인덱스0부터 시작
+                var $item = $menuItems.eq(currentIndex);
+                $item.addClass("select");
+                //인덱스 증가(옆 형제로 옮겨감)
+                currentIndex++;
+
+                //현재 인덱스가 li개수보다 크면 타이머를 종료한다.
+                if ($menuItems.length <= currentIndex) {
+                    clearInterval(timerID);
+                }
+
+            },1000);
+        });
+    </script>
+</head>
+
+<body>
+    <ul class="tab-menu" id="tabMenu">
+        <li class="menuitem1">구글</li>
+        <li class="menuitem2">페이스북</li>
+        <li class="menuitem3">프린터리스트</li>
+        <li class="menuitem4">트위터</li>
+        <li class="menuitem5">에어비엔비</li>
+        <li class="menuitem6">패스</li>
+    </ul>
+</body>
+
+</html>

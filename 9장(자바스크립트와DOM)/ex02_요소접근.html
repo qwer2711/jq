@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-2(요소접근)</title>
+    <style>
+        #container {
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+            padding: 20px 10px 0 50px;
+            border:2px solid green;
+        }
+
+        #img_load , #desc{
+            float: left;
+
+        }
+        #img_load img {
+            width: 300px;
+            border:1px solid #ccc;
+        }
+        .spn {
+            font-weight: 700;
+            font-size: 1.0em;
+        }
+        .bright{
+            color: blue;
+        }
+        p {
+            font-size: 0.9em;
+            line-height: 1.4em;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 id="text_head">산타</h1>
+        <div id="img_load"><img src="images/santa.png" alt=""></div>
+        
+        <div id="desc">
+            <h2 class="bright">Information</h2>
+            <p>산타할아버지는 알고계신데~~ <span class="spn">산타송</span></p>
+            <h2>Note</h2>
+            <p class="bright">크리스마스에는 산타가 선물을 준데요</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("text_head").onclick = function(){
+            this.style.fontSize = "5em";
+        } 
+    </script>
+</body>
+</html>

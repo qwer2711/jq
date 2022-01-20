@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전역위치 설정하기(offset()활용)</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 20px;
+        }
+
+        #parent1{
+            position: absolute;
+            width: 500px;
+            height: 400px;
+            left: 100px;
+            top:100px;
+        }
+
+        #gigu{
+            width: 100px;
+            position: absolute;
+            left: 50px;
+            top:100px;
+        }
+
+
+        
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $gigu = $("#gigu");
+            //document에 클릭 이벤트 등록
+            $(document).click(function(e){
+                //클릭한 지점의 전역 좌표를 구하는 코드
+                var left = e.pageX;
+                var top = e.pageY;
+
+                //전역 위치 설정하기
+                $gigu.offset({
+                    left: left,
+                    top: top
+                });
+            });
+        });
+    </script>
+    
+</head>
+<body>
+    <div id="parent1">
+        <img src="images/gigu.PNG" id="gigu">
+    </div>
+</body>
+</html>

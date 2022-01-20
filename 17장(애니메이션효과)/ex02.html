@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>easing 함수</title>
+    <style>
+        *{
+            font-size: 25px;
+
+        }
+        #target {
+            border:1px solid black;
+            width: 600px;
+            height: 450px;
+            text-align: center;
+        }
+        #kor {
+            width: 100%;
+            display: block;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <!-- 이징함수 사용하기위해 라이브러리 가져옴 -->
+    <script src="libs/jquery.easing.1.3.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $img = $("#target");
+            //크기(width,height)와 opacity변경 후 display:none
+            $("#show").click(function(){
+                $img.show(1000,"easeInElastic");
+            });
+            $("#hide").click(function(){
+                $img.hide(1000,"easeOutElastic");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="target">
+        <img src="images/korea.png" alt="" id="kor">
+    </div>
+    <div>
+        <button id="show">show</button>
+        <button id="hide">hide</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 vs 제이쿼리 스타일 다루기-1</title>
+    <style>
+        div{
+            margin:10px;
+            padding: 10px;
+            font-size: 26px;
+            border:1px solid red;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        //자바스크립트로 스타일 접근하기
+        // window.onload = function(){
+        //     var content = document.getElementById("test");
+        //     //내부속성 출력가능
+        //     console.log("color =", content.style.color);
+        //     //외부속성 = 접근못함 출력이 되지않는다.
+        //     console.log("border =", content.style.border);
+        //     console.log("margin =", content.style.margin);
+        //     console.log("font-size =", content.style.margin);
+
+        //     //자바스크립트 방식으로 접근해야 출력가능
+        //     console.log("border = ", window.getComputedStyle(content).border);
+        // }
+
+        //제이쿼리로 스타일 접근
+        $(document).ready(function(){
+            var $content = $("#test");
+
+        //제이쿼리로 스타일 접근 위해서는 css()만 사용하면 내외부 상관없이
+        //바로 값을 얻어 낼 수가 있다.
+        console.log("color=" , $content.css("color"));
+        console.log("color=" , $content.css("border"));
+        console.log("color=" , $content.css("font-size"));
+        console.log("color=" , $content.css("margin"));
+        });
+        
+    </script>
+</head>
+<body>
+    <div id="test" class="content" style="color:blue;">
+        스타일다루기
+    </div>
+</body>
+</html>

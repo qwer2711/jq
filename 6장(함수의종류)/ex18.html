@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>클로저함수 -1 (count)</title>
+
+
+    <style></style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        //일반함수에서 지역변수는 함수가 종료가 되면 같이 메모리에서
+        //제거가 되는게 일반적이다.
+        /* function add(){
+            var cnt = 0;
+            cnt++;
+            return cnt;
+        }
+
+        document.write("1번째 cnt값 : " + add() + "<br>");
+        document.write("1번째 cnt값 : " + add() + "<br>");
+        document.write("1번째 cnt값 : " + add() + "<br>");
+        document.write("1번째 cnt값 : " + add() + "<br>");
+        document.write("1번째 cnt값 : " + add() + "<br>");
+        document.write("1번째 cnt값 : " + add() + "<br>"); */
+
+        //클로저 이용
+        function createCounter(){
+            var cnt = 0; //지역변수 선언
+            //add()는 클로저 함수
+            function add(){
+                //외부함수의 지역변수를 이용
+                //메모리에서 제거가 안된다.(클로저함수)
+                cnt++;
+                return cnt;
+            }
+            return add;
+        }
+
+        var counter = createCounter();
+
+        document.write("1번째 cnt값 : " + counter() + "<br>");
+        document.write("2번째 cnt값 : " + counter() + "<br>");
+        document.write("3번째 cnt값 : " + counter() + "<br>");
+        document.write("4번째 cnt값 : " + counter() + "<br>");
+        document.write("5번째 cnt값 : " + counter() + "<br>");
+        document.write("6번째 cnt값 : " + counter() + "<br>"); 
+
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

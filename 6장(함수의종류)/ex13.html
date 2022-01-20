@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>콜백함수-3(콜백함수 풀이)</title>
+
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        
+       //일반적인 함수를 선언하고 호출하는 형태
+
+       /* function res(n1,n2){
+           return n1 + n1;
+       }
+
+       var result = res(10,20);
+
+       document.write(" 결과값 : " + result); */
+
+       //-------------------------------------------------
+
+       //콜백함수 함수를 선언하고 호출하는 형태
+
+        function test(n1, n2, callback){
+            //로직구현 1
+            var value = n1 + n2;
+            //콜백함수 호출 2
+            callback(value);
+            //동기와 비동기 test  = "비동기"
+            document.write("add()함수 : " + value + "<br>");
+        }
+
+        //로직처리부분 함수로 정의 3
+        function ttt(callback2){
+            document.write("ttt()함수 : " + callback2 + "<br>");
+        }
+
+        //로직구현함수로 콜백함수 호출
+        test(100,20,ttt);
+
+        //순서
+        //1. 로직구현 함수 만들기 (콜백함수 정의)
+        //2. 로직처리 함수 만들기 (새로운 함수이름으로 콜백함수 로직을 만들어주기)
+        //3. 로직구현 함수와 콜백함수 호출하여 결과값 얻기
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

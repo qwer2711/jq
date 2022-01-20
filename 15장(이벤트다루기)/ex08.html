@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버블링 활용-2(라이브 이벤트) - 일반적방법</title>
+    <style>
+        body{
+            font-size: 30px;
+        }
+        
+        ul{
+            border:1px solid black;
+        }
+
+        li {
+            border:1px solid red;
+            margin: 20px;
+        }
+        #add{
+            font-size: 30px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $menu = $(".menu");
+            var cnt = 5; //카운트변수 추가
+
+            $("#add").click(function(e){
+                cnt++; //카운트 증가
+
+                //신규메뉴항목 생성
+                var $newItem = $("<li>메뉴" + cnt + "</li>");
+
+                //신규 메뉴 항목에다가 클릭 이벤트 등록하는 코드
+                //신규 메뉴가 추가 될 때 마다 이벤트 리스너가 늘어난다.
+                //코드의 효율이 좋지 못함
+                $newItem.on("click",function(e){
+                alert($(this).html());
+            });
+                
+                //동적으로 메뉴추가
+                $menu.append($newItem);
+            });
+
+
+            //메뉴 항목에 클릭 이벤트 등록
+            //기존 li에만 적용 됨 >> 추가된 li에는 적용되지 않음
+            //이벤트를 등록하는 시점에 신규메뉴 항목은 등록이 되지않았기때문에
+            //위 신규 li에도 이벤트를
+            $(".menu li").click(function(e){
+                alert($(this).html());
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <button id="add">추가</button>
+    </div>
+    <ul class="menu">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li>메뉴5</li>
+    </ul>
+</body>
+</html>

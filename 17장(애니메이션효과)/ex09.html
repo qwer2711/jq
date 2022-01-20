@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 정의 애니메이션 만들기 -4 progress바 움직이기</title>
+    <style>
+        .box{
+            border:2px solid green;
+            margin: 10px;
+            width: 500px;
+            height: 50px;
+        }
+        .bar {
+            background: #98bf21;
+            height: 100%;
+            width: 0px;
+            display: block;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <!-- 이징함수 사용하기위해 라이브러리 가져옴 -->
+    <script src="libs/jquery.easing.1.3.js"></script>
+    <script>
+        $(document).ready(function(){
+            var text = null;
+
+            $("#btnStart").click(function(){
+                $(".bar").stop().animate({
+                    width: 500
+                },2000, "linear" ,function(){
+                    text = "프로그램 설치완료";
+                    $("#txt").html(text);
+                });
+                
+            });
+
+            $("#btnStop").click(function(){
+                $(".bar").stop().animate({
+                    width:1
+                },2000,"swing");
+                text = "프로그램 설치취소";
+                $("#txt").html(text);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1 id="txt">프로그램 설치 중</h1>
+    <div>
+        <button id="btnStart">시작</button>
+        <button id="btnStop">중지</button>
+    </div>
+    <div class="box">
+        <div id="bar" class="bar"></div>
+    </div>
+</body>
+</html>

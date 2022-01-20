@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 클래스(배열의 이미지)</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .arrBanner {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            border:3px solid gray;
+
+        }
+
+        #arrBanner1 {
+            top: 100px;
+            left: 100px;
+        }
+
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $arrBanner = $(".arrBanner");
+            var i = 0;
+            var imgList = ["pf-1","pf-2","pf-3","pf-4","pf-5"]
+
+            //롤링배너 만들기
+            setInterval(function(){
+                i++; //다음 인덱스 구하기
+                //인덱스 범위가 같으면 다시 롤링하기 위해서 인덱스를 0으로 설정
+                if (i >= imgList.length){
+                    i=0;
+                }
+
+                $arrBanner.attr("src","images/" + imgList[i] + ".jpg");
+
+            },1000);
+
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <img src="images/pf-1.jpg" class="arrBanner" id="arrBanner1" alt="">
+</body>
+</html>

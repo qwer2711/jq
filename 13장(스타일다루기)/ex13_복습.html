@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리를 활용한 글자의 랜덤 크기 및 랜덤색상 출력하기</title>
+    <style>
+        #panel {
+            width: 600px;
+            border: 2px solid red;
+            position: relative;
+            overflow: visible;
+            font-size: 20px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        //전역변수 초기화 및 선언
+        var cnt = 0;
+        var $panel = null;
+        var timeID = 0;
+
+        $(document).ready(function(){
+            //초기화
+            init();
+            //타이머시작
+            start();
+
+            
+        });
+
+        function init(){
+            $panel = $("#panel");
+        }
+
+        function start() {
+            //timeID = 1초마다 addtag함수 호출
+            timeID = setInterval(addtag , 100);
+        }
+
+        function addtag() {
+            var $span = $("<span></span>");
+            //스타일 값 생성하기
+            //외우기!!!! 색상을 16진수로 랜덤하게 구하고 있는 코드
+            var color = "#" + (parseInt(Math.random() * 0xffffff)).toString(16);
+            //10px ~ 100px 사이의 글자크기를 구하고 있는 코드
+            var fontSize = (10 + parseInt(Math.random() * 40)) + "px";
+            //1초마다 cnt css스타일(컬러,사이즈)이 랜덤으로 바뀐다.
+            $span.css({
+                color : color,
+                fontSize : fontSize,
+                'display' : 'inline-block'
+            });
+
+            cnt++;
+            //span태그 안에 cnt를 추가하고 있는 코드
+            $span.html(cnt);
+            //panel에 span 객체를 추가함으로 자식노드를 계속 생성한다.
+            $panel.append($span);
+
+            //cnt가 100이 되면 timeID 멈춘다.
+            if (cnt == 100){
+                clearInterval(timeID);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="panel">
+    </div>
+</body>
+
+</html>

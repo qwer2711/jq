@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본행동 취소,cancelable,e.preventDefault();</title>
+    <style>
+        body{
+            font-size: 30px;
+        }
+        #test2{
+            display: block;
+            margin-top: 1500px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //기본행도은 어떤 특정태그(a등등)가 이벤트가 발생하게 되면 해당
+            //태그만이 작동하는 기본적인 행동을 의미한다.
+            $("#test1").on("click",function(e){
+                alert('반갑습니다.');
+                //cancelable가 true라면 취소가능
+                console.log("cancelable 값 : " + e.cancelable);
+                //기본행동(사이트이동) 취소
+                e.preventDefault();
+            });
+
+            $("#test2").on("click",function(e){
+                //#은 위로 위동이지만 위로 이동안되게 막음
+                e.preventDefault();
+            });
+        });
+    </script>
+</head>
+<body>
+    <a href="www.naver.com" id="test1">네이버로 이동</a>
+    <a href="#" id="test2">위로 이동</a>
+</body>
+</html>

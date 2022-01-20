@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리를 활용한 스타일 값 설정하기-2</title>
+    <style>
+
+        body {
+            font-size: 20px;
+            font-family: "고딕";
+        }
+        .menu {
+            padding: 10px;
+            list-style: none;
+            border:2px solid red;
+        }
+        .menu li {
+            border:1px solid blue;
+            margin: 10px;
+        }
+
+        li.select {
+            background: burlywood;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        //제이쿼리로 스타일 접근
+        $(document).ready(function(){
+            var $item = $(".menu li.select");
+            $("#exec").click(function(){
+                //폰트사이즈 값 출력하고 숫자로 바꾸고 있는 코드
+                var fontSize = parseInt($item.css("fontSize"));
+                // console.log(fontSize);
+                
+                //버튼 클릭할때마다 글씨크기 증가
+                $item.css("fontSize", fontSize + 1);
+            });
+        });
+        
+    </script>
+</head>
+<body>
+    <button id="exec">버튼</button>
+    <ul class="menu">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li class="select">메뉴3</li>
+        <li>메뉴4</li>
+        <li>메뉴5</li>
+    </ul>
+</body>
+</html>

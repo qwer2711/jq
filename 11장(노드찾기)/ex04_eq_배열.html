@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 다루기 - eq()매서드 or get() / 배열[index]</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            float: left;
+            background: brown;
+            margin: 10px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //div 5개가 생성되고 div 객체들을 배열로 저장하고 있다.
+            var $divList =$("div");
+            //0부터 시작 1번째 div만 가져와서 red로 변경하기
+            //eq()의 리턴값이 div의 제이쿼리 객체가 넘어온다.
+            var $div_one = $divList.eq(0);
+            $div_one.css("background","green");
+            $div_one.css("color","white");
+            $div_one.html("eq(0)");
+
+            // 두번째 div만 가져와서 border 추가하기
+            //get()은 리턴값이 Element요소가 넘어온다.
+            //하여 get()으로 선택한 노드를 바꾸려면 자바스크립트 방법으로 바꿔주어야 한다.
+            var $div_two = $divList.get(1);
+            $div_two.style.background = "pink";
+
+            //배열[index]은 리턴값이 Element요소가 넘어온다.
+            //하여배열[index]으로 선택한 노드를 바꾸려면 자바스크립트 방법으로 바꿔주어야 한다.
+            var $div_three = $divList[2];
+            $div_three.style.background = "yellow";
+
+
+        });
+    </script>
+</head>
+<body>
+    <div>div1</div>
+    <div>div2</div>
+    <div>div3</div>
+    <div>div4</div>
+    <div>div5</div>
+</body>
+</html>

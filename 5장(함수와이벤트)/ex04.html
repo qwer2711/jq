@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지역변서와 전역변수</title>
+</head>
+<body>
+    <script>
+
+    //전역변수 : 프로그램 어디에서도 사용가능, 프로그램이 종료시 같이 사라진다.
+    //지역변수: 함수나 {}안에 선언되어 있으며 범위는 {}안에서만 허용이 되며, 
+    //또한 함수나 {}내용이 종료가 되면 사라지게 된다.
+    //함수 {} 안에서 전역변수 수정시에는 var를 빼서 입력한다.
+
+
+    //전역변수 선언과 동시에 초기화
+    var name = "global"; 
+
+    function func1(){
+        //지역변수 선언과 동시에 초기화
+        var name = "local1"; 
+        document.write("name =" + name + "<br/>");
+    }
+
+    function func2(){
+        //지역변수 선언과 동시에 초기화
+        var name = "local2"; 
+        document.write("name =" + name + "<br/>");
+    }
+
+    function func3(){
+        //전역변수
+        document.write("전역변수<br/>");
+        name = "local3"; //함수밖에{}변수를 출력하고 있으니 당연히 전역변수의 내용을 덮어쓴다.
+        document.write("name =" + name + "<br/>");
+    }
+
+
+    //함수 밖에서 출력되고있으니 당연히 전역변수가 출력된다.
+    //global 출력
+    document.write("함수 밖에서 출력되고있으니 당연히 전역변수가 출력된다.<br/>"); 
+    document.write("name =" + name + "<br/><br/>"); 
+
+
+    document.write("지역변수 출력<br/> :함수안에서 작동<br/>")
+    func1(); //loacl1출력
+    func2(); //loacl2출력
+    document.write("<br/>"); 
+    func3(); //loacl3출력
+ 
+    //func3에서 이미 전역변수를 수정했으니 local3로 함수안 전역변수 출력
+    document.write("<br/>func3에서 이미 전역변수를 수정했으니 local3로 출력<br/>"); 
+    document.write("name =" + name + "<br/>"); 
+
+
+
+    </script>
+    
+</body>
+</html>

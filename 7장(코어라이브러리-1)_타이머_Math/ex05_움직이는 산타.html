@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>산타와 곰친구 움직이기</title>
+
+    <style>
+        #panel {
+            width: 1000px;
+            height: 300px;
+            position: relative;
+            background: #eee;
+            /* overflow: hidden; */
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+        #bar {
+            position: absolute;
+            left: 0px;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background:rgb(102, 79, 4);
+        }
+        #santa {
+            position: absolute;
+            width: 150px;
+            left: 10px;
+            top:160px;
+        }
+
+        #nav {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #btnStart , #btnStop {
+            font-size: 16px;
+            padding:10px 20px; 
+            border:0; 
+            background:green; 
+            color:#fff; 
+            border-radius:5px;
+            cursor: pointer;
+        }
+
+        #btnStart:hover , #btnStop:hover {
+            background: #000;
+
+        }
+
+        #btnStop {
+            background:rgb(209, 4, 4); color:#fff; 
+        }
+
+
+        
+    </style>
+
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+
+        //순서
+
+        //변수선언 
+        //init() initEvent()
+        //start()
+        //stop()
+        //moveSanta()
+
+
+        //전역변수를 선언과 동시에 초기화
+        var $santa = null;
+        //이동할 거리
+        var step = 25;
+        var timeID = 0;
+
+        $(document).ready(function(){
+            init();
+            initEvent();
+        });
+            
+        //요소 초기화
+        function init() {
+            //산타 요소 찾아오기
+            $santa = $('#santa');
+        }
+
+        //클릭 이벤트 등록
+        function initEvent() {
+            $('#btnStart').click(function(){
+                start();
+            });
+
+            $('#btnStop').click(function(){
+                stop();
+            });
+        }
+
+        //움직이기 타이머 실행 setInterval
+        function start() {
+            if(timeID == 0){
+                timeID = setInterval(function(){
+                    //0.9초마다 물고기 움직이기
+                    //현재 산타 위치 + step
+            var x = $santa.position().left + step;
+            
+            //산타가 800을 넘는 경우, 방향 반대로
+            if(x >= 800){
+                //.attr()함수는 선택자에 의해서 선택된 요소들 중에서
+                //요소의 속성값을 가지고 오는 함수이다.
+                $santa.attr("src", "images/santa2.png");
+                step = -25;
+            }
+            //위치가 50보다 작은경우 이동방향 오른쪽으로 변경
+            if(x < 50){
+                $santa.attr("src", "images/santa.png");
+                step = 25;
+            }
+
+            //산타 위치 설정
+            $santa.css("left", x);
+                },90);
+            }
+        }
+
+        //멈추기 clearInterval
+        function stop() {
+            clearInterval(timeID);
+            timeID = 0;
+
+        }
+
+        //움직이기 x값 지정해주기
+        // function moveSanta() {
+        //     //현재 산타 위치 + step
+        //     var x = $santa.position().left + step;
+            
+        //     //산타가 800을 넘는 경우, 방향 반대로
+        //     if(x >= 800){
+        //         //.attr()함수는 선택자에 의해서 선택된 요소들 중에서
+        //         //요소의 속성값을 가지고 오는 함수이다.
+        //         $santa.attr("src", "images/santa2.png");
+        //         step = -5;
+        //     }
+        //     //위치가 50보다 작은경우 이동방향 오른쪽으로 변경
+        //     if(x < 50){
+        //         $santa.attr("src", "images/santa.png");
+        //         step = 5;
+        //     }
+
+        //     //산타 위치 설정
+        //     $santa.css("left", x);
+        // }
+
+        
+    
+    </script>
+</head>
+<body>
+    <div id="panel">
+        <div id="bar"></div>
+        <img src="images/santa.png" id="santa">
+    </div>
+    <div id="nav">
+        <button id="btnStart">시작</button>
+        <button id="btnStop">멈춤</button>
+    </div>
+
+</body>
+</html>

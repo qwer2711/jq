@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>함수-6(익명함수를 이용하여 프로그램 만들기)</title>
+    <style>
+        #container{
+            border:1px solid red;
+            line-height: 10px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        var count = 0; //전역변수 선언 및 초기화
+        var $container = null; //전역변수 선언 및 초기화
+
+        $(document).ready(function(){
+            $container = $("#container");
+            //append() = 문자열을 붙여서 출력하는 함수(메서드)
+            //$container.append
+            $container.append("<p>" + count + "안녕하세요. 반갑습니다.");
+            count++;
+            //버튼이 클릭되면 익명함수를 실행하여 지속적으로
+            //글자를 붙여서 출력하게 된다.
+            $("#btnPrint").click(function(){ //익명함수
+                $container.append("<p>" + count + "안녕하세요. 반갑습니다.");
+                count++;
+
+            });
+            
+        });
+    </script>
+</head>
+<body>
+    
+    <button id="btnPrint">출력하기</button>
+    <div id="container">
+
+    </div>
+</body>
+</html>

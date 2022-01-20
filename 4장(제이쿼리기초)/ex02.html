@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리로 색상바꾸기</title>
+    <!-- CDN방식 인터넷이 연결이 되는 곳에서만 아래 내용을 가져옴 -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    
+    <!-- jQuery다운받아 사용하는 방법 -->
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        //현재 문서가 준비되면 #menu2 li를 찾아서 스타일 아래와 같이 적용하라.
+        $(document).ready(function(){
+            $("#menu2 li").css("color","red");
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <ul class="menu" id="menu1">
+            <li>김밥</li>
+            <li>비빔밥</li>
+            <li>제육덮밥</li>
+            <li>오징어덮밥</li>
+            <li>돌솥밥</li>
+        </ul>
+
+        <ul class="menu" id="menu2">
+            <li>사과</li>
+            <li>수박</li>
+            <li>파인애플</li>
+            <li>포도</li>
+            <li>자두</li>
+        </ul>
+    </div>
+
+    <script>
+    </script>
+    
+</body>
+</html>
