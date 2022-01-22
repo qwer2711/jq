@@ -15,12 +15,12 @@ pic.addEventListener("mouseover",changePic,false);
 pic.addEventListener("mouseout",originPic,false);
 
 function changePic(){
-    pic.src = "images/boy.png"
-    //pic1.src = "images/boy.png"
+    pic.src = "images/coffee_1.jpg"
+    //pic1.src = "images/coffee_1.jpg"
 }
 
 function originPic(){
-    pic.src = "images/girl.png"
-    //pic1.src = "images/girl.png"
+    pic.src = "images/coffee_0.jpg"
+    //pic1.src = "images/coffee_1.jpg"
 }
 
